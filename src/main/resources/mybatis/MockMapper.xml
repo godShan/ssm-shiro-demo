@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wys.demo.mapper.MockMapper">
+
+	<!--实体映射-->
+	<resultMap id="BaseResultMap" type="com.wys.demo.entity.Mock">
+		<id property="ID" column="ID" />
+		<result property="URL" column="URL" />
+		<result property="DATA" column="DATA" />
+		<result property="CREATEDAT" column="CREATED_AT" />
+		<result property="isStart" column="is_start" />
+		<result property="remark" column="remark" />
+	</resultMap>
+
+
+	<!-- 通用查询结果列-->
+	<sql id="Base_Column_List">
+		 id,	URL,	DATA,	CREATED_AT,	is_start,	remark
+	</sql>
+
+	<!-- 查询（根据主键ID查询） -->
+	<select id="selectAll" resultMap="BaseResultMap" >
+		 SELECT
+		 <include refid="Base_Column_List" />
+		 FROM mock
+	</select>
+
+
+</mapper>
